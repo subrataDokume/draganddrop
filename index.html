@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script src="https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.js "></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.css "
+    />
+    <link
+      rel="stylesheet"
+      href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section class="main_body">
+        <div class="main_body_content">
+
+        </div>
+      </section>
+      <div class="d-flex align-items-start tab_content">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+            tabindex="0"
+          >
+            <div class="icon"></div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+            tabindex="0"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet id
+            alias soluta repellat iusto unde sequi magni veniam repudiandae
+            explicabo.
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-disabled"
+            role="tabpanel"
+            aria-labelledby="v-pills-disabled-tab"
+            tabindex="0"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet id
+            alias soluta repellat iusto unde sequi magni veniam repudiandae
+            explicabo.
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+            tabindex="0"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet id
+            alias soluta repellat iusto unde sequi magni veniam repudiandae
+            explicabo.
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-settings"
+            role="tabpanel"
+            aria-labelledby="v-pills-settings-tab"
+            tabindex="0"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet id
+            alias soluta repellat iusto unde sequi magni veniam repudiandae
+            explicabo.
+          </div>
+        </div>
+        <div
+          class="nav flex-column nav-pills me-3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        ></div>
+      </div>
+      <section class="text_editor_button hidden_text_editor_button">
+        <div class="content">
+          <div class="delete_close flex_space_between">
+            <h4>CONTENT</h4>
+            <div class="delete_icon flex_space_between">
+              <i class="bi bi-trash-fill"></i>
+              <i class="bi bi-copy"></i>
+              <i class="bi bi-x"></i>
+            </div>
+          </div>
+          <div class="text_button button_controler">
+            <div class="accordian-box">
+              <button class="accordion active">TEXT</button>
+              <div class="panel" style="max-height: 351px">
+                <ul>
+                  <li class="flex_space_between">
+                    <span>Font Family</span>
+                    <select
+                      name="font_family"
+                      id="font_family"
+                      class="font_family"
+                      value=""
+                    >
+                      <option value="">select font-family</option>
+                      <option value="'Courier New', Courier, monospace">
+                        'Courier New', Courier, monospace
+                      </option>
+                      <option
+                        value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+                      >
+                        'Franklin Gothic Medium'...
+                      </option>
+                      <option
+                        value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+                      >
+                        'Gill Sans', 'Gill Sans MT', Calibri,...
+                      </option>
+                      <option
+                        value="'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
+                      >
+                        'Lucida Sans', 'Lucida Sans Regular'....
+                      </option>
+                      <option
+                        value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                      >
+                        'Segoe UI', Tahoma, Geneva, Verdana..
+                      </option>
+                      <option
+                        value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+                      >
+                        'Trebuchet MS', 'Lucida Sans Unicode...
+                      </option>
+                      <option value="'Times New Roman', Times, serif">
+                        'Times New Roman', Times, serif
+                      </option>
+                      <option value="Verdana, Geneva, Tahoma, sans-serif">
+                        Verdana, Geneva, Tahoma, sans-serif
+                      </option>
+                      <option
+                        value="Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+                      >
+                        Cambria, Cochin, Georgia, Times, .... serif
+                      </option>
+                      <option
+                        value="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+                      >
+                        system-ui, -apple-system,...
+                      </option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Weight</span>
+                    <select
+                      name="font_weight"
+                      value=""
+                      id="font_weight"
+                      class="font_weight"
+                      onchange="fontWeight(this.value)"
+                    >
+                      <option value="">select font-weight</option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Size</span>
+                    <div class="font_size flex_center">
+                      <small class="decrease" value="1" onclick="decrease()"
+                        >-</small
+                      >
+                      <input
+                        class="px_input"
+                        type="number"
+                        value="16"
+                        onchange="inputValue(this.value)"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1" onclick="increase()"
+                        >+</small
+                      >
+                    </div>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="colorpiker"
+                        class="colorpiker"
+                        onchange="colorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Align</span>
+                    <span class="text_align flex_space_between">
+                      <i class="bi bi-text-left" onclick="textAlignLeft()"></i>
+                      <i
+                        class="bi bi-text-center"
+                        onclick="textAlignCenter()"
+                      ></i>
+                      <i
+                        class="bi bi-text-right"
+                        onclick="textAlignRight()"
+                      ></i>
+                      <i class="bi bi-justify" onclick="textAlignjustify()"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion active">GENERAL</button>
+              <div class="panel general" style="max-height: 250px">
+                <p>Container Padding</p>
+                <div class="text_padding_container">
+                  <div class="flex_Col_Start">
+                    <small>Left</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="left_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Right</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="right_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Top</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="top_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Buttom</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="buttom_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">LINKS</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">RESPONSIVE DESIGN</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns_button button_controler">
+            <div class="accordian-box">
+              <button class="accordion active">Columns</button>
+              <div class="panel" style="max-height: 351px">
+                <div class="columns_grid_selecter">
+                  <div class="grid_selector grid_1">
+                    <div class="columns" style="flex-basis: 100%"></div>
+                  </div>
+                  <div class="grid_selector grid_2">
+                    <div class="columns" style="flex-basis: 50%"></div>
+                    <div class="columns" style="flex-basis: 50%"></div>
+                  </div>
+
+                  <div class="grid_selector grid_3">
+                    <div class="columns" style="flex-basis: 33.3%"></div>
+                    <div class="columns" style="flex-basis: 33.3%"></div>
+                    <div class="columns" style="flex-basis: 33.3%"></div>
+                  </div>
+                  <div class="grid_selector grid_4">
+                    <div class="columns" style="flex-basis: 25%"></div>
+                    <div class="columns" style="flex-basis: 25%"></div>
+                    <div class="columns" style="flex-basis: 25%"></div>
+                    <div class="columns" style="flex-basis: 25%"></div>
+                  </div>
+
+                  <div class="grid_selector grid_5">
+                    <div class="columns" style="flex-basis: 33.33%"></div>
+                    <div class="columns" style="flex-basis: 66.67%"></div>
+                  </div>
+                  <div class="grid_selector grid_6">
+                    <div class="columns" style="flex-basis: 66.33%"></div>
+                    <div class="columns" style="flex-basis: 33.67%"></div>
+                  </div>
+                  <div class="grid_selector grid_7">
+                    <div class="columns" style="flex-basis: 16.67%"></div>
+                    <div class="columns" style="flex-basis: 33.33%"></div>
+                    <div class="columns" style="flex-basis: 16.67%"></div>
+                    <div class="columns" style="flex-basis: 33.33%"></div>
+                  </div>
+                  <div class="grid_selector grid_8">
+                    <div class="columns" style="flex-basis: 33.33%"></div>
+                    <div class="columns" style="flex-basis: 16.67%"></div>
+                    <div class="columns" style="flex-basis: 33.33%"></div>
+                    <div class="columns" style="flex-basis: 16.67%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion active">GENERAL</button>
+              <div class="panel general" style="max-height: 250px">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
+                vitae ipsum reiciendis animi officia magnam explicabo suscipit.
+                Magnam corrupti, ut minima quibusdam, fugit totam pariatur est
+                perspiciatis accusantium dolore quisquam quod itaque tempora
+                dolorum consequuntur ad. Dicta delectus assumenda reiciendis!
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">LINKS</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">RESPONSIVE DESIGN</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="button_button button_controler">
+            <div class="accordian-box">
+              <button class="accordion active">ACTIVE</button>
+              <div class="panel url_selector" style="max-height: 500px">
+                <form class="onsubmitHandler">
+                  <div class="url">
+                    <span>URL</span>
+                    <input
+                      type="text"
+                      class="getButtonUrl"
+                      onchange="getButtonUrl(this.value)"
+                    />
+                  </div>
+                  <div class="url">
+                    <span>TARGET</span>
+                    <select
+                      name="target_select"
+                      id="taget_select"
+                      onchange="getTab(this.value)"
+                    >
+                      <option value="_blank">New Tab</option>
+                      <option value="">Same Tab</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="url_submit_button">
+                    SUBMIT
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion active">TEXT</button>
+              <div class="panel" style="max-height: 500px">
+                <ul>
+                  <li class="flex_space_between">
+                    <span>Font Family</span>
+                    <select
+                      name="font_family"
+                      id="font_family"
+                      class="font_family"
+                      value=""
+                    >
+                      <option value="">select font-family</option>
+                      <option value="'Courier New', Courier, monospace">
+                        'Courier New', Courier, monospace
+                      </option>
+                      <option
+                        value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+                      >
+                        'Franklin Gothic Medium'...
+                      </option>
+                      <option
+                        value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+                      >
+                        'Gill Sans', 'Gill Sans MT', Calibri,...
+                      </option>
+                      <option
+                        value="'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
+                      >
+                        'Lucida Sans', 'Lucida Sans Regular'....
+                      </option>
+                      <option
+                        value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                      >
+                        'Segoe UI', Tahoma, Geneva, Verdana..
+                      </option>
+                      <option
+                        value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+                      >
+                        'Trebuchet MS', 'Lucida Sans Unicode...
+                      </option>
+                      <option value="'Times New Roman', Times, serif">
+                        'Times New Roman', Times, serif
+                      </option>
+                      <option value="Verdana, Geneva, Tahoma, sans-serif">
+                        Verdana, Geneva, Tahoma, sans-serif
+                      </option>
+                      <option
+                        value="Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+                      >
+                        Cambria, Cochin, Georgia, Times, .... serif
+                      </option>
+                      <option
+                        value="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+                      >
+                        system-ui, -apple-system,...
+                      </option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Weight</span>
+                    <select
+                      name="font_weight"
+                      value=""
+                      id="font_weight"
+                      class="font_weight"
+                      onchange="fontWeight(this.value)"
+                    >
+                      <option value="">select font-weight</option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Size</span>
+                    <div class="font_size flex_center">
+                      <small class="decrease" value="1" onclick="decrease()"
+                        >-</small
+                      >
+                      <input
+                        class="px_input"
+                        type="number"
+                        value="15"
+                        onchange="inputValue(this.value)"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1" onclick="increase()"
+                        >+</small
+                      >
+                    </div>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="colorpiker"
+                        class="colorpiker"
+                        onchange="colorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Background Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="button_background_color"
+                        onchange="backgroundColorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Align</span>
+                    <span class="text_align flex_space_between">
+                      <i class="bi bi-text-left" onclick="textAlignLeft()"></i>
+                      <i
+                        class="bi bi-text-center"
+                        onclick="textAlignCenter()"
+                      ></i>
+                      <i
+                        class="bi bi-text-right"
+                        onclick="textAlignRight()"
+                      ></i>
+                      <i class="bi bi-justify" onclick="textAlignjustify()"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordian-box">
+              <button class="accordion active">GENERAL</button>
+              <div class="panel general" style="max-height: 250px">
+                <p>Container Padding</p>
+                <div class="text_padding_container">
+                  <div class="flex_Col_Start">
+                    <small>Left</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="left_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Right</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="right_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Top</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="top_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Buttom</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="buttom_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordian-box">
+              <button class="accordion active">BORDER</button>
+              <div class="panel" style="max-height: 500px">
+                <ul>
+                  <li class="flex_space_between">
+                    <span>Broder width</span>
+                    <div class="font_size flex_center">
+                      <small
+                        class="decrease"
+                        value="1"
+                        onclick="widthDecrease()"
+                        >-</small
+                      >
+                      <input
+                        class="border_width_px_input"
+                        type="number"
+                        value="0"
+                        onchange="borderWidthInputValue(this.value)"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small
+                        class="increase"
+                        value="1"
+                        onclick="widthIncrease()"
+                        >+</small
+                      >
+                    </div>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Border Style</span>
+                    <select
+                      name=""
+                      id="border_style"
+                      class="border_style"
+                    ></select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Border Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="button_border_color"
+                        onchange="borderColorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">RESPONSIVE DESIGN</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="heading_button button_controler">
+            <div class="accordian-box">
+              <button class="accordion active">TEXT</button>
+              <div class="panel" style="max-height: 500px">
+                <ul>
+                  <li class="flex_space_between">
+                    <span>Heading Type</span>
+                    <span class="text_align flex_space_between heding_selector">
+                      <i class="bi bi-type-h1"></i>
+                      <i class="bi bi-type-h2"></i>
+                      <i class="bi bi-type-h3"></i>
+                      <i class="bi bi-type-h4"></i>
+                    </span>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Family</span>
+                    <select
+                      name="font_family"
+                      id="font_family"
+                      class="font_family"
+                      value=""
+                    >
+                      <option value="">select font-family</option>
+                      <option value="'Courier New', Courier, monospace">
+                        'Courier New', Courier, monospace
+                      </option>
+                      <option
+                        value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
+                      >
+                        'Franklin Gothic Medium'...
+                      </option>
+                      <option
+                        value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+                      >
+                        'Gill Sans', 'Gill Sans MT', Calibri,...
+                      </option>
+                      <option
+                        value="'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif"
+                      >
+                        'Lucida Sans', 'Lucida Sans Regular'....
+                      </option>
+                      <option
+                        value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                      >
+                        'Segoe UI', Tahoma, Geneva, Verdana..
+                      </option>
+                      <option
+                        value="'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+                      >
+                        'Trebuchet MS', 'Lucida Sans Unicode...
+                      </option>
+                      <option value="'Times New Roman', Times, serif">
+                        'Times New Roman', Times, serif
+                      </option>
+                      <option value="Verdana, Geneva, Tahoma, sans-serif">
+                        Verdana, Geneva, Tahoma, sans-serif
+                      </option>
+                      <option
+                        value="Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+                      >
+                        Cambria, Cochin, Georgia, Times, .... serif
+                      </option>
+                      <option
+                        value="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+                      >
+                        system-ui, -apple-system,...
+                      </option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Weight</span>
+                    <select
+                      name="font_weight"
+                      value=""
+                      id="font_weight"
+                      class="font_weight"
+                      onchange="fontWeight(this.value)"
+                    >
+                      <option value="">select font-weight</option>
+                    </select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Font Size</span>
+                    <div class="font_size flex_center">
+                      <small class="decrease" value="1" onclick="decrease()"
+                        >-</small
+                      >
+                      <input
+                        class="px_input"
+                        type="number"
+                        value="15"
+                        onchange="inputValue(this.value)"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1" onclick="increase()"
+                        >+</small
+                      >
+                    </div>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="colorpiker"
+                        class="colorpiker"
+                        onchange="colorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Text Align</span>
+                    <span class="text_align flex_space_between">
+                      <i class="bi bi-text-left" onclick="textAlignLeft()"></i>
+                      <i
+                        class="bi bi-text-center"
+                        onclick="textAlignCenter()"
+                      ></i>
+                      <i
+                        class="bi bi-text-right"
+                        onclick="textAlignRight()"
+                      ></i>
+                      <i class="bi bi-justify" onclick="textAlignjustify()"></i>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion active">GENERAL</button>
+              <div class="panel general" style="max-height: 250px">
+                <p>Container Padding</p>
+                <div class="text_padding_container">
+                  <div class="flex_Col_Start">
+                    <small>Left</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="left_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Right</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="right_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Top</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="top_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Buttom</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="buttom_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">LINKS</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+            <div class="accordian-box">
+              <button class="accordion">RESPONSIVE DESIGN</button>
+              <div class="panel">
+                <p style="color: brown; padding: 20px">comming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
