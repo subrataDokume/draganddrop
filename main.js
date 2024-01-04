@@ -22,26 +22,18 @@ import { selectValue } from "./resetValue.js";
   // const button_1 = document.querySelectorAll(".button_1");
   // console.log(button_1);
   let val;
-  let dropBoxClass = "main_body_content";
   export let leftPadding = 0;
   export let rightPadding = 0;
   export let topPadding = 0;
   export let bottomPadding = 0;
 
-    const font_family = document.querySelectorAll(".font_family");
+   const font_family = document.querySelectorAll(".font_family");
    export const border_style = document.querySelector(".border_style");
 
     const icon = document.querySelector(".icon");
     const v_pills_tab = document.querySelector("#v-pills-tab");
     const font_weight = document.querySelectorAll(".font_weight");
 
-    export function classChange (param){
-        console.log(param);
-        console.log("first time",dropBoxClass);
-        dropBoxClass = param ;
-        console.log("second time",dropBoxClass);
-        return dropBoxClass ;
-    }
   const iconHtml = iconBox
     .map(
       (icon) =>
@@ -82,101 +74,85 @@ import { selectValue } from "./resetValue.js";
   border_style.insertAdjacentHTML("beforeend", borderstyleHtml);
   let innerHTML;
 
-  dragula(
-    [
-      document.querySelector(".icon"),
-      document.querySelector(`.${dropBoxClass}`),
-    ],
-    {
-      copy: function (el, source) {
-        console.log("copy", el, el.className);
-        if (el.children[0].hasAttribute("columns")) {
-          text_editor_button.classList.remove("hidden_text_editor_button");
-          editorButtonShowHide();
-          document.querySelector(".columns_button").style.display = "block";
-        }
-        return source === document.querySelector(".icon");
-      },
-      accepts: function (el, target) {
-        return target !== document.querySelector(".icon");
-      },
-      //   moves: function (el, container, handle) {
-      //     console.log(el,handle,container);
-      //   return handle.classList.contains('box');
-      // }
-    }
-  )
-    .on("drop", function (el, target) {
-      console.log(target);
-
-      if (el.children[0].hasAttribute("heading")) {
-        innerHTML = `<div style="text-align: left;"  class="heading"  ><div class="" style="margin: 0px; line-height: 140%; font-weight: 400; font-size: 22px; overflow-wrap: break-word; display: block; position: relative;" contenteditable="true"><span><span>Heading</span></span></div></div>`;
-      } else if (el.children[0].hasAttribute("button")) {
-        innerHTML = `<div style="text-align: center;" class="button" ><div href="" target="_blank" class="" style="border-radius: 4px; line-height: 120%; display: inline-block; text-decoration: none; text-align: center;   background-color: rgb(58, 174, 224); color: rgb(255, 255, 255); width: auto; max-width: 100%; overflow-wrap: break-word; font-size: 14px; position: relative;" contenteditable="true"><span style="line-height: 16.8px;" data-mce-style="line-height: 16.8px;">Button Text</span></div></div>`;
-      } else if (el.children[0].hasAttribute("text")) {
-        innerHTML = `<div  style="padding: 10px;" class="text" onclick="textSelectDelete(this)"><div class="" style="line-height: 140%; text-align: left; overflow-wrap: break-word; font-size: 14px; position: relative;" contenteditable="true"><p style="line-height: 140%;" data-mce-style="line-height: 140%;">This is a new Text block. Change the text.</p></div></div>`;
-      } else if (el.children[0].hasAttribute("image")) {
-        innerHTML = `<div id="u_content_image_2" class="u_content_image" style="padding: 10px;"><div style="position: relative; line-height: 0px; text-align: center;">
+   export const drake = dragula(
+     [
+       document.querySelector(".icon"),
+       document.querySelector(".main_body_content")
+     ],
+     {
+       copy: true,
+       accepts: function (el, target) {
+         return target !== document.querySelector(".icon");
+       },
+     }
+    )
+     .on("drop", function (el, target) {
+       console.log("target", target);
+      //  target = document.querySelector(".columns_drop_box");
+       if (el.children[0].hasAttribute("heading")) {
+         innerHTML = `<div style="text-align: left;"  class="heading"  ><div class="" style="margin: 0px; line-height: 140%; font-weight: 400; font-size: 22px; overflow-wrap: break-word; display: block; position: relative;" contenteditable="true"><span><span>Heading</span></span></div></div>`;
+       } else if (el.children[0].hasAttribute("button")) {
+         innerHTML = `<div style="text-align: center;" class="button" ><div href="" target="_blank" class="" style="border-radius: 4px; line-height: 120%; display: inline-block; text-decoration: none; text-align: center;   background-color: rgb(58, 174, 224); color: rgb(255, 255, 255); width: auto; max-width: 100%; overflow-wrap: break-word; font-size: 14px; position: relative;" contenteditable="true"><span style="line-height: 16.8px;" data-mce-style="line-height: 16.8px;">Button Text</span></div></div>`;
+       } else if (el.children[0].hasAttribute("text")) {
+         innerHTML = `<div  style="padding: 10px;" class="text" onclick="textSelectDelete(this)"><div class="" style="line-height: 140%; text-align: left; overflow-wrap: break-word; font-size: 14px; position: relative;" contenteditable="true"><p style="line-height: 140%;" data-mce-style="line-height: 140%;">This is a new Text block. Change the text.</p></div></div>`;
+       } else if (el.children[0].hasAttribute("image")) {
+         innerHTML = `<div id="u_content_image_2" class="u_content_image" style="padding: 10px;"><div style="position: relative; line-height: 0px; text-align: center;">
         <img alt="" class="v-src-width v-src-max-width" src="https://cdn.tools.unlayer.com/image/placeholder.png" style="width:100%;max-width:800px" title="">
 
     </div></div>`;
-      } else if (el.children[0].hasAttribute("divider")) {
-        innerHTML = `<div id="u_content_divider_1" class="u_content_divider" style="padding: 10px;"><div style="text-align: center; line-height: 0;"><div style="border-top: 1px solid rgb(187, 187, 187); width: 100%; display: inline-block; line-height: 1px; height: 0px; vertical-align: middle;"> </div></div></div>`;
-      } else if (el.children[0].hasAttribute("columns")) {
-        innerHTML = `<div class="columns_contener" onclick="columnSelectDelete(this)" style=" display:flex  border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button style=" font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
-        </div>`;
-      }
-      el.innerHTML = innerHTML;
+       } else if (el.children[0].hasAttribute("divider")) {
+         innerHTML = `<div id="u_content_divider_1" class="u_content_divider" style="padding: 10px;"><div style="text-align: center; line-height: 0;"><div style="border-top: 1px solid rgb(187, 187, 187); width: 100%; display: inline-block; line-height: 1px; height: 0px; vertical-align: middle;"> </div></div></div>`;
+       } else if (el.children[0].hasAttribute("columns")) {
+         innerHTML = `<div class="columns_drop_box handle" style="border: 1px dotted rgb(29, 228, 122); text-align: center; padding: 20px;">
+             <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
+             <br>
+             <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
+           </div>`;
+       }
+       el.innerHTML = innerHTML;
 
-      const headings = document.querySelectorAll(".heading");
+       const headings = document.querySelectorAll(".heading");
+       const columns_contener = document.querySelectorAll(".columns_drop_box");
+       function textSelectDelete(value) {
+         console.log(value);
+         val = value.children[0];
+         text_editor_button.classList.remove("hidden_text_editor_button");
+         editorButtonShowHide();
+         document.querySelector(".text_button").style.display = "block";
+         selectGlobalValue(val);
+       }
+       // ======================== by click heading=> heading select delete and modifi====================
+       //  function headingSelectDelete(value) {
+       //    console.log(value.children[0]);
+       //    val = value.children[0];
+       //    text_editor_button.classList.remove("hidden_text_editor_button");
+       //    editorButtonShowHide();
+       //    document.querySelector(".heading_button").style.display = "block";
+       //    selectGlobalValue(val);
+       //  }
+       headings.forEach((heading) => {
+         heading.addEventListener("click", function (e) {
+           console.log(e.target.children[0]);
+           val = e.target.children[0];
+           text_editor_button.classList.remove("hidden_text_editor_button");
+           editorButtonShowHide();
+           document.querySelector(".heading_button").style.display = "block";
+           selectGlobalValue(val);
+         });
+       });
+       // ======================== by click heading=>button select modify delete handaler=================
+       const button = document.querySelectorAll(".button");
+       button.forEach((btn) => {
+         btn.addEventListener("click", buttonSelectDelete);
+       });
 
-      function textSelectDelete(value) {
-        console.log(value);
-        val = value.children[0];
-        text_editor_button.classList.remove("hidden_text_editor_button");
-        editorButtonShowHide();
-        document.querySelector(".text_button").style.display = "block";
-        selectGlobalValue(val);
-      }
-      // ======================== by click heading=> heading select delete and modifi====================
-      //  function headingSelectDelete(value) {
-      //    console.log(value.children[0]);
-      //    val = value.children[0];
-      //    text_editor_button.classList.remove("hidden_text_editor_button");
-      //    editorButtonShowHide();
-      //    document.querySelector(".heading_button").style.display = "block";
-      //    selectGlobalValue(val);
-      //  }
-      headings.forEach((heading) => {
-        heading.addEventListener("click", function (e) {
-          console.log(e.target.children[0]);
-          val = e.target.children[0];
-          text_editor_button.classList.remove("hidden_text_editor_button");
-          editorButtonShowHide();
-          document.querySelector(".heading_button").style.display = "block";
-          selectGlobalValue(val);
-        });
-      });
-      // ======================== by click heading=>button select modify delete handaler=================
-      const button = document.querySelectorAll(".button");
-      button.forEach((btn) => {
-        btn.addEventListener("click", buttonSelectDelete);
-      });
-
-      function columnSelectDelete(value) {
-        val = value;
-        console.log(value);
-        text_editor_button.classList.remove("hidden_text_editor_button");
-        editorButtonShowHide();
-        document.querySelector(".columns_button").style.display = "block";
-      }
-    })
-    .on("out", function (el, container) {
-      console.log("Out", el);
-    });
+       columns_contener.forEach((columns) => {
+         columns.addEventListener("click", coloumns_drop_function);
+       });
+     })
+     .on("out", function (el, container) {
+       console.log("Out", el);
+     });
 
 
 
@@ -185,6 +161,17 @@ import { selectValue } from "./resetValue.js";
         console.log(columns);
            columns.addEventListener("click",coloumns_drop_function)
        })
+
+
+       // test columns function 
+          // function columnSelectDelete(e) {
+          //   console.log(e);
+          //   val = e.target;
+          //   // console.log(e.target);
+          //   text_editor_button.classList.remove("hidden_text_editor_button");
+          //   editorButtonShowHide();
+          //   document.querySelector(".columns_button").style.display = "block";
+          // }
   //  =================button==================
    function buttonSelectDelete(e) {
      console.log(e.target);
@@ -545,187 +532,7 @@ import { selectValue } from "./resetValue.js";
 
   // columns button style
 
-  const grid_selector = document.querySelectorAll(".grid_selector");
-  console.log(grid_selector);
-  grid_selector.forEach((gridBox) => {
-    console.log(gridBox);
-    gridBox.addEventListener("click", function (e) {
-      console.log(e.target.parentNode.classList[1]);
 
-      if (e.target.parentNode.classList[1] === "grid_1") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `
-                  <div class="grid_selector grid_1">
-                    <div class="main_columns" style="flex-basis: 100%">
-                    <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-                     <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div>
-        </div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_2") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `        <div class="grid_selector grid_2">
-                    <div class="main_columns" style="flex-basis: 50%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 50%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_3") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `
-                    <div class="grid_selector grid_3">
-                    <div class="main_columns" style="flex-basis: 33.3%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.3%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.3%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_4") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `
-                                     <div class="grid_selector grid_4">
-                    <div class="main_columns" style="flex-basis: 25%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 25%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 25%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 25%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_5") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `         <div class="grid_selector grid_5">
-                    <div class="main_columns" style="flex-basis: 33.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 66.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_6") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `                  <div class="grid_selector grid_6">
-                    <div class="main_columns" style="flex-basis: 66.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_7") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `                  <div class="grid_selector grid_7">
-                    <div class="main_columns" style="flex-basis: 16.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 16.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      } else if (e.target.parentNode.classList[1] === "grid_8") {
-        val.innerHTML = "";
-        val.insertAdjacentHTML(
-          "beforeend",
-          `                  <div class="grid_selector grid_8">
-                    <div class="main_columns" style="flex-basis: 33.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 16.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 33.33%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                    <div class="main_columns" style="flex-basis: 16.67%">          <div class="columns_contener" onclick="columnSelectDelete(this)" style=" border-width: 1px; border-style: dotted; border-color: cyan; text-align: center;">
-            <span>No content here. Drag content from right.</span>
-            <br>
-            <button onclick="addContent(event,this)" style="font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white;">Add Content</button>
-        </div></div>
-                  </div>`
-        );
-      }
-    });
-  });
 
 // window.addEventListener("DOMContentLoaded",mainFunction);
 
@@ -783,3 +590,11 @@ import { selectValue } from "./resetValue.js";
 
 
 // export nesesary value=========================
+
+
+dragula([document.querySelector(".main_body_content")], {
+  moves: function (el, container, handle) {
+    return handle.classList.contains("handle");
+  },
+  copy:false,
+});
