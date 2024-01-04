@@ -473,6 +473,7 @@ hr{
 .grid_selector{
     display: flex;
     gap: 2px;
+
 }
 .grid_selector:hover{
     outline: 2px solid blue;

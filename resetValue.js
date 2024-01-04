@@ -1,3 +1,24 @@
+import {
+  border_style,
+  border_width_px_input,
+  bottomPadding,
+  buttom_padding_input,
+  fontFamilyReset,
+  fontWeight,
+  inputValue,
+  leftPadding,
+  left_padding_input,
+  rightPadding,
+  right_padding_input,
+  textAlignCenter,
+  textAlignLeft,
+  textAlignRight,
+  textAlignjustify,
+  topPadding,
+  top_padding_input,
+} from "./main.js";
+
+const px_input = document.querySelectorAll(".px_input");
 
 export function selectValue(val) {
   // font-size globaly set for click every text
