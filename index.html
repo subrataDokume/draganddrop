@@ -34,16 +34,19 @@
     <main>
       <section class="main_body">
         <div class="main_body_content">
-           <div class="columns_drop_box handle" style="border: 1px dotted rgb(29, 228, 122); text-align: center; padding: 20px;">
+          <div class="drop_columns_content handle" style=" border: 0.5px dotted black; display: flex; align-items: center; justify-content: center;">
+             <div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
            </div>
-           <div class="columns_drop_box handle" style="border: 1px dotted rgb(29, 228, 122); text-align: center; padding: 20px;">
+          </div>
+          
+           <!-- <div class="columns_drop_box handle" style="border: 1px dotted rgb(29, 228, 122); text-align: center; padding: 20px;">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
-           </div>
+           </div> -->
         </div>
       </section>
       <div class="d-flex align-items-start tab_content">
@@ -361,20 +364,123 @@
               </div>
             </div>
             <div class="accordian-box">
-              <button class="accordion active">GENERAL</button>
+              <button class="accordion active">COLUMN PROPERTIES</button>
+              <div class="panel" style="max-height: 500px; ">
+                <li class="flex_space_between" style="color: black;">
+                  <span>Background Color</span>
+                  <span>
+                    <input
+                      type="color"
+                      id="button_background_color"
+                      onchange="backgroundColorValue(this.value)"
+                    />
+                  </span>
+                </li>
               <div class="panel general" style="max-height: 250px">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
-                vitae ipsum reiciendis animi officia magnam explicabo suscipit.
-                Magnam corrupti, ut minima quibusdam, fugit totam pariatur est
-                perspiciatis accusantium dolore quisquam quod itaque tempora
-                dolorum consequuntur ad. Dicta delectus assumenda reiciendis!
+                <p>Padding Container</p>
+                <div class="text_padding_container">
+                  <div class="flex_Col_Start">
+                    <small>Left</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="left_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Right</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="right_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Top</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="top_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                  <div class="flex_Col_Start">
+                    <small>Buttom</small>
+                    <div class="font_size flex_center text_padding">
+                      <small class="decrease" value="1">-</small>
+                      <input
+                        class="buttom_padding_input padding_px_input"
+                        type="number"
+                        value="0"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small class="increase" value="1">+</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel" style="max-height: 500px; padding-top: 30px">
+                <p style="text-align: center">Border Container</p>
+                <ul style="padding: 0">
+                  <li class="flex_space_between">
+                    <span>Border width</span>
+                    <div class="font_size flex_center">
+                      <small
+                        class="decrease"
+                        value="1"
+                        onclick="widthDecrease()"
+                        >-</small
+                      >
+                      <input
+                        class="border_width_px_input"
+                        type="number"
+                        value="0"
+                        onchange="borderWidthInputValue(this.value)"
+                      />
+                      <small class="px" disable="true">px</small>
+                      <small
+                        class="increase"
+                        value="1"
+                        onclick="widthIncrease()"
+                        >+</small
+                      >
+                    </div>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Border Style</span>
+                    <select
+                      name=""
+                      id="border_style"
+                      class="border_style"
+                    ></select>
+                  </li>
+                  <li class="flex_space_between">
+                    <span>Border Color</span>
+                    <span>
+                      <input
+                        type="color"
+                        id="button_border_color"
+                        onchange="borderColorValue(this.value)"
+                      />
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div class="accordian-box">
-              <button class="accordion">LINKS</button>
-              <div class="panel">
-                <p style="color: brown; padding: 20px">comming soon</p>
-              </div>
             </div>
             <div class="accordian-box">
               <button class="accordion">RESPONSIVE DESIGN</button>

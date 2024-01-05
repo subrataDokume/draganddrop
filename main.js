@@ -77,7 +77,8 @@ import { selectValue } from "./resetValue.js";
    export const drake = dragula(
      [
        document.querySelector(".icon"),
-       document.querySelector(".main_body_content")
+       document.querySelector(".drop_columns_content"),
+       document.querySelector(".main_body_content"),
      ],
      {
        copy: true,
@@ -85,10 +86,9 @@ import { selectValue } from "./resetValue.js";
          return target !== document.querySelector(".icon");
        },
      }
-    )
+   )
      .on("drop", function (el, target) {
-       console.log("target", target);
-      //  target = document.querySelector(".columns_drop_box");
+        console.log("target",target);
        if (el.children[0].hasAttribute("heading")) {
          innerHTML = `<div style="text-align: left;"  class="heading"  ><div class="" style="margin: 0px; line-height: 140%; font-weight: 400; font-size: 22px; overflow-wrap: break-word; display: block; position: relative;" contenteditable="true"><span><span>Heading</span></span></div></div>`;
        } else if (el.children[0].hasAttribute("button")) {
@@ -103,16 +103,19 @@ import { selectValue } from "./resetValue.js";
        } else if (el.children[0].hasAttribute("divider")) {
          innerHTML = `<div id="u_content_divider_1" class="u_content_divider" style="padding: 10px;"><div style="text-align: center; line-height: 0;"><div style="border-top: 1px solid rgb(187, 187, 187); width: 100%; display: inline-block; line-height: 1px; height: 0px; vertical-align: middle;"> </div></div></div>`;
        } else if (el.children[0].hasAttribute("columns")) {
-         innerHTML = `<div class="columns_drop_box handle" style="border: 1px dotted rgb(29, 228, 122); text-align: center; padding: 20px;">
+         innerHTML = `<div class="drop_columns_content handle" style=" border: 0.5px dotted black; display: flex; align-items: center; justify-content: center;">
+             <div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
-           </div>`;
+           </div>
+          </div>`;
        }
        el.innerHTML = innerHTML;
-
        const headings = document.querySelectorAll(".heading");
-       const columns_contener = document.querySelectorAll(".columns_drop_box");
+       const drop_columns_content = document.querySelectorAll(
+         ".drop_columns_content"
+       );
        function textSelectDelete(value) {
          console.log(value);
          val = value.children[0];
@@ -146,19 +149,18 @@ import { selectValue } from "./resetValue.js";
          btn.addEventListener("click", buttonSelectDelete);
        });
 
-       columns_contener.forEach((columns) => {
+       drop_columns_content.forEach((columns) => {
          columns.addEventListener("click", coloumns_drop_function);
        });
+      
      })
      .on("out", function (el, container) {
-       console.log("Out", el);
      });
 
 
 
   //  drop conten in columns_drag_box =====================
        columns_drop_box.forEach((columns)=>{
-        console.log(columns);
            columns.addEventListener("click",coloumns_drop_function)
        })
 
@@ -591,10 +593,10 @@ import { selectValue } from "./resetValue.js";
 
 // export nesesary value=========================
 
-
-dragula([document.querySelector(".main_body_content")], {
+ dragula([document.querySelector(".main_body_content")], {
   moves: function (el, container, handle) {
+    console.log(handle);
     return handle.classList.contains("handle");
   },
-  copy:false,
-});
+  copy: false,
+})
