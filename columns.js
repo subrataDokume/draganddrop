@@ -2,34 +2,42 @@ import { closeTextEditorButton, editorButtonShowHide, drake } from "./main.js";
 
 const text_editor_button = document.querySelector(".text_editor_button");
 
+
 let value = "";
+export function getValue(param){
+  console.log( "after click",  param.children[0]);
+   value = param.children[0];
+}
+let button;
 export function coloumns_drop_function(e) {
   console.log(e.target);
   if (e.target.className === "text_1") {
     // console.log(e.target.parentElement.children[2]);
     e.target.parentElement.children[2].style.display = "inline-block";
     value = e.target.parentElement.parentElement;
+    button = e.target.parentElement.children[2];
   } else {
     e.target.children[0].children[2].style.display = "inline-block";
     value = e.target;
+    button = e.target.children[0].children[2];
   }
 
   text_editor_button.classList.remove("hidden_text_editor_button");
   editorButtonShowHide();
   document.querySelector(".columns_button").style.display = "block";
+
+  button.addEventListener("click", changeDragBox);
+  function changeDragBox(e) {
+    e.stopPropagation();
+    console.log(e.target.parentElement.className);
+    console.log(e.target.parentElement);
+    closeTextEditorButton();
+    drake.containers.push(e.target.parentElement);
+    console.log(drake.containers);
+  }
+  console.log("AfterClick", value);
 }
 
-// button_1.forEach((button)=>{
-// button.addEventListener("click",changeDragBox)
-// })
-//  function changeDragBox(e) {
-//     e.stopPropagation()
-//     console.log(e.target.parentElement.className);
-//     // dropBox=e.target.parentElement;
-//     console.log(e.target.parentElement);
-//     closeTextEditorButton();
-//     drake.containers.push(e.target.parentElement);
-// };
 
 const grid_selector = document.querySelectorAll(".grid_selector");
 grid_selector.forEach((gridBox) => {
@@ -68,7 +76,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 2) {
         value.insertAdjacentHTML(
           "beforeend",
-          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -99,7 +107,7 @@ grid_selector.forEach((gridBox) => {
         console.log(value.children.length);
         let insetHtml = "";
         for (let i = value.children.length; i < 3; i++) {
-          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -133,7 +141,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 4) {
         let insetHtml = "";
         for (let i = value.children.length; i < 4; i++) {
-          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -167,7 +175,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 2) {
         value.insertAdjacentHTML(
           "beforeend",
-          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -196,7 +204,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 2) {
         value.insertAdjacentHTML(
           "beforeend",
-          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -227,7 +235,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 4) {
         let insetHtml = "";
         for (let i = value.children.length; i < 4; i++) {
-          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
@@ -263,7 +271,7 @@ grid_selector.forEach((gridBox) => {
       } else if (value.children.length < 4) {
         let insetHtml = "";
         for (let i = value.children.length; i < 4; i++) {
-          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+          insetHtml += `<div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; ">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>

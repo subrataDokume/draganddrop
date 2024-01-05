@@ -6,7 +6,7 @@ const tooltipList = [...tooltipTriggerList].map(
   (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
 );
 
-import {  coloumns_drop_function} from "./columns.js";
+import {  coloumns_drop_function, getValue} from "./columns.js";
 
 import { iconBox, contentPart, borderStyleArray, fontWeightData } from "./data.js";
 import { selectValue } from "./resetValue.js";
@@ -78,17 +78,30 @@ import { selectValue } from "./resetValue.js";
      [
        document.querySelector(".icon"),
        document.querySelector(".drop_columns_content"),
-       document.querySelector(".main_body_content"),
+       //  document.querySelector(".main_body_content"),
      ],
      {
-       copy: true,
+       copy: function (el, source) {
+         if (el.children[0].hasAttribute("columns")) {
+           this.containers.push(document.querySelector(".main_body_content"));
+           return true;
+         } else {
+           this.containers = this.containers.filter((contener) => {
+             if (contener.className !== "main_body_content") {
+               return contener;
+             }
+           });
+           console.log("before", this.containers);
+           return true;
+         }
+       },
        accepts: function (el, target) {
          return target !== document.querySelector(".icon");
        },
      }
    )
-     .on("drop", function (el, target) {
-        console.log("target",target);
+     .on("drop", function (el, target, source, sibling) {
+
        if (el.children[0].hasAttribute("heading")) {
          innerHTML = `<div style="text-align: left;"  class="heading"  ><div class="" style="margin: 0px; line-height: 140%; font-weight: 400; font-size: 22px; overflow-wrap: break-word; display: block; position: relative;" contenteditable="true"><span><span>Heading</span></span></div></div>`;
        } else if (el.children[0].hasAttribute("button")) {
@@ -103,15 +116,23 @@ import { selectValue } from "./resetValue.js";
        } else if (el.children[0].hasAttribute("divider")) {
          innerHTML = `<div id="u_content_divider_1" class="u_content_divider" style="padding: 10px;"><div style="text-align: center; line-height: 0;"><div style="border-top: 1px solid rgb(187, 187, 187); width: 100%; display: inline-block; line-height: 1px; height: 0px; vertical-align: middle;"> </div></div></div>`;
        } else if (el.children[0].hasAttribute("columns")) {
-         innerHTML = `<div class="drop_columns_content handle" style=" border: 0.5px dotted black; display: flex; align-items: center; justify-content: center;">
-             <div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center; margin: 20px;">
+         innerHTML = `<div class="drop_columns_content handle" style=" border: 0.5px dotted black; display: flex; align-items: center; justify-content: center; padding:5px">
+             <div class="columns_drop_box " style="border: 1px dotted rgb(29, 228, 122); text-align: center;">
              <span class="text_1" style="color: #115ccc; ">No content here. Drag content from right</span>
              <br>
              <button class="button_1" style=" display: none; font-size: 10px;padding: 10px 20px;background-color: #115ccc; margin-top: 20px;color: white; ">Add Content</button>
            </div>
           </div>`;
+         text_editor_button.classList.remove("hidden_text_editor_button");
+         editorButtonShowHide();
+         document.querySelector(".columns_button").style.display = "block";
        }
        el.innerHTML = innerHTML;
+        if (target.className === "columns_drop_box ") {
+          console.log("el",el);
+          target.innerHTML = innerHTML
+        }
+       getValue(el);
        const headings = document.querySelectorAll(".heading");
        const drop_columns_content = document.querySelectorAll(
          ".drop_columns_content"
@@ -152,12 +173,10 @@ import { selectValue } from "./resetValue.js";
        drop_columns_content.forEach((columns) => {
          columns.addEventListener("click", coloumns_drop_function);
        });
-      
+
+       console.log("target", target);
      })
-     .on("out", function (el, container) {
-     });
-
-
+     .on("out", function (el, container) {});
 
   //  drop conten in columns_drag_box =====================
        columns_drop_box.forEach((columns)=>{
